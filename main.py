@@ -19,11 +19,13 @@ LONG_BREAK_MIN = 20
 
 window = Tk()
 window.title("Pomodoro Timer!")
+window.config(padx=100, pady=50)
 
 
 canvas = Canvas(width=200, height=224)
 img_file = PhotoImage(file="tomato.png")
-canvas.create_image(100, 112, image=img_file)
+canvas.create_image(103, 112, image=img_file)
+canvas.create_text(103, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.pack()
 
 
