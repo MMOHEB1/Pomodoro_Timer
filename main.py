@@ -1,4 +1,5 @@
 from tkinter import *
+
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -9,9 +10,14 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
-# ---------------------------- TIMER RESET ------------------------------- # 
 
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# ---------------------------- TIMER RESET ------------------------------- #
+
+# ---------------------------- TIMER MECHANISM ------------------------------- #
+
+def start_timer():
+    count_down(WORK_MIN * 60)
+
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
@@ -19,6 +25,7 @@ def count_down(count):
     canvas.itemconfig(timer, text=count)
     if count > 0:
         window.after(1000, count_down, count - 1)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -34,8 +41,7 @@ canvas.create_image(100, 112, image=img_file)
 timer = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
-
-start_btn = Button(text="Start", highlightthickness=0, bd=0)
+start_btn = Button(text="Start", highlightthickness=0, bd=0, command=start_timer)
 start_btn.grid(column=0, row=2)
 
 tick_label = Label(text="✅", bg=YELLOW)
