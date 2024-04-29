@@ -23,7 +23,8 @@ window.title("Pomodoro Timer!")
 
 canvas = Canvas(width=200, height=224)
 img_file = PhotoImage(file="tomato.png")
-canvas.create_image(100, 112, image_names(img_file))
+canvas.create_image(100, 112, image=img_file)
+canvas.pack()
 
 
 
