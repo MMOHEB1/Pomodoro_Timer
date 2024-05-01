@@ -1,4 +1,5 @@
 from tkinter import *
+import math
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -22,7 +23,11 @@ def start_timer():
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
 def count_down(count):
-    canvas.itemconfig(timer, text=count)
+    count_min = math.floor(count/60)
+    count_sec = count % 60
+    if count_sec == 0:
+        count_sec = "00"
+    canvas.itemconfig(timer, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, count_down, count - 1)
 
@@ -38,7 +43,7 @@ label.grid(column=1, row=0)
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 img_file = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=img_file)
-timer = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+timer = canvas.create_text(100, 130, text="25:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 
 start_btn = Button(text="Start", highlightthickness=0, bd=0, command=start_timer)
